@@ -1,0 +1,72 @@
+.container {
+    width: 18rem;
+    border: 1px solid #4a4a4a;
+    height: 18rem;
+    margin-top: 10vh;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 1px;
+    display: flex;
+    flex-direction: column;
+}
+.city-name {
+    font-weight: 600;
+    font-size: x-large;
+}
+
+.container div{
+    margin-top: 1rem;
+    background: #fff;
+}
+
+.temperature{
+    font-size: x-large;
+    color: #2196F3;
+}
+.temperature span{
+    background: #fff;
+}
+
+.temperature-unit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.temperature-unit button {
+    width: 40px;
+    height: 40px;
+    background: #2196F3;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 4px 4px 10px 3px #c1bbbb;
+}
+
+.max-min {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.max-min span {
+    background: #fff;
+}
+
+.weather {
+    color: #9ec3b4;
+    font-family: cursive;
+    font-size: large;
+    margin: 0 !important;
+}
+
+.max {
+    color: chocolate;
+}
+
+.min {
+    color: chocolate;
+}
