@@ -16,46 +16,46 @@ function WeatherCard({ city }) {
     useEffect(() => {
         async function getData() {
             const response = await Axios.get(
-            `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
              );
             console.log(response.data);
             setWeatherData(response.data);
+            if(isKelvinActive){
+                setTemperature(response.data.main.temp);
+                setMaxTemperature(response.data.main.temp_max);
+                setMinTemperature(response.data.main.temp_min);
+            }
+
+            let temp = Number(response.data.main.temp);
+            let maxTemp = Number(response.data.main.temp_max);
+            let minTemp = Number(response.data.main.temp_min);
+            
+            if(isCelsiusActive) {
+                temp = toCelsius(temp);
+                maxTemp = toCelsius(maxTemp);
+                minTemp = toCelsius(minTemp);
+                setTemperature(temp);
+                setMaxTemperature(maxTemp);
+                setMinTemperature(minTemp);
+            }
+    
+            if(isFahrenheitActive){
+                temp = toFahrenheit(temp);
+                maxTemp = toFahrenheit(maxTemp);
+                minTemp = toFahrenheit(minTemp);
+                setTemperature(temp);
+                setMaxTemperature(maxTemp);
+                setMinTemperature(minTemp);
+            }
          }
-        getData();
-        var temp = Number(weatherData.main.temp);
-        var maxTemp = Number(weatherData.main.temp_max);
-        var minTemp = Number(weatherData.main.temp_min);
-        
-        if(isKelvinActive){
-            setTemperature(weatherData.main.temp);
-            setMaxTemperature(weatherData.main.temp_max);
-            setMinTemperature(weatherData.main.temp_min);
-        }
-        
-        if(isCelsiusActive) {
-            temp = toCelsius(temp);
-            maxTemp = toCelsius(maxTemp);
-            minTemp = toCelsius(minTemp);
-            setTemperature(temp);
-            setMaxTemperature(maxTemp);
-            setMinTemperature(minTemp);
-        }
-
-        if(isFahrenheitActive){
-            temp = toFahrenheit(temp);
-            maxTemp = toFahrenheit(maxTemp);
-            minTemp = toFahrenheit(minTemp);
-            setTemperature(temp);
-            setMaxTemperature(maxTemp);
-            setMinTemperature(minTemp);
-        }
+        getData();   
     
-    });
+    },[city]);
 
     
-    var temp = Number(weatherData.main.temp);
-    var maxTemp = Number(weatherData.main.temp_max);
-    var minTemp = Number(weatherData.main.temp_min);  
+    let temp = Number(weatherData.main.temp);
+    let maxTemp = Number(weatherData.main.temp_max);
+    let minTemp = Number(weatherData.main.temp_min);  
     function clickHandler(event){
         let currentTempUnit = event.target.name;
             console.log(currentTempUnit);
